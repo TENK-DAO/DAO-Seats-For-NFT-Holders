@@ -100,7 +100,12 @@ async function init() {
 	}
 	
 };
-init()
+document.getElementById("connect").addEventListener("click",()=>{
+	console.log("click")
+	init();
+	document.getElementById("connect").hidden = true;
+	document.getElementById("seatAdder").hidden = false;
+})
 
 async function getDaoContract(addy) {
 	const methodOptions = {
@@ -159,14 +164,15 @@ function mergeholders(holders, policy) {
 }
 
 function setNewPolicy( policy) {
+	// console.log( policy)
 	window.contract.add_proposal({
-		propsal: {
+		proposal: {
 			"description": "change policy members / roles",
 			"kind": {
-				ChangePolicy: policy
+				ChangePolicy: {policy}
 			}
 		}
-	})
+	},null,policy.proposal_bond);
 }
 
 // document.getElementById("contractid").addEventListener("change",async (e)=>{
@@ -219,3 +225,9 @@ async function buttonClick(){
 	// let newList= holderRole.kind.Group(o1 => holders.some(o2 => o1 === o2));
 }
 document.getElementById("fancybtn").addEventListener("click",buttonClick)
+window.onload=()=>{
+	if (window.location.search.indexOf("transactionHashes") > -1) {
+		const params = new URLSearchParams(window.location.search)
+		document.getElementById("connect").outerHTML=`proposal added <br> <a href="https://explorer.mainnet.near.org/transactions/${params.get("transactionHashes")}">Click here to view the tx</a><br> it may take a few minutes to show on astro dao`
+	}
+}

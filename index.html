@@ -1,14 +1,23 @@
 
 <script src="https://cdn.jsdelivr.net/gh/nearprotocol/near-api-js/dist/near-api-js.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/@near-wallet-selector/core"></script>
+<script src="https://cdn.jsdelivr.net/npm/@near-wallet-selector/modal-ui"></script>
+<script src="https://cdn.jsdelivr.net/npm/@near-wallet-selector/near-wallet"></script> -->
+
 <script defer src="main.js"></script>
 
-<label>enter collection to check owners of</label>
-<input type="string" id="contractid" value="mara-gen-0-by-maranftnear">
+<button id="connect">Connect your wallet</button>
+<div hidden id="seatAdder">
 
-<label>enter dao address</label>
-<input type="string" id="daoaddy" value="nearchan.sputnik-dao.near">
-
-<button id="fancybtn">add holders to dao</button>
-<ul id="holdersList">
-
-</ul>
+    <label>enter collection to check owners of</label>
+    <input type="string" id="contractid" value="imahinasyon-by-arkibootzznear">
+    
+    <label>enter dao address</label>
+    <input type="string" id="daoaddy" value="rekt.sputnik-dao.near">
+    
+    <button id="fancybtn">add holders to dao</button>
+    
+    <ul id="holdersList">    
+    
+    </ul>
+</div>
